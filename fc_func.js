@@ -1,6 +1,6 @@
 let passengers = [  { name: 'Jane', paid: true, ticket: 'coach'}, 
                     { name: 'Doctor', paid: true, ticket: 'firstclass'}, 
-                    { name: 'Sue', paid: false, ticket: 'firstclass'}, 
+                    { name: 'Sue', paid: false, ticket: 'optimal'}, 
                     { name: 'John', paid: true, ticket: 'coach'} ];
 
 let noflylist = ['Doctor'];
@@ -42,24 +42,48 @@ function printPassenger(passenger) {
 }
 
 function createDrinkOrder(passenger) {
-    let orferFunction;
+    let orderFunction;
     if (passenger.ticket === 'firstclass') {
-        orferFunction = function() {
-        alert('Would you like cockatail or wine?')
-        };
-    } else {
-        orferFunction = function() {
-        alert('Your choice is cola or water?')
+            orderFunction = function() {
+            alert('Would you like cockatail or wine?')
         }
-    }
-    return orferFunction;
+        } else if (passenger.ticket === 'optimal') {
+            orderFunction = function() {
+            alert('Would you like lemonad, water or wine?')
+        } 
+        } else {
+            orderFunction = function() {
+            alert('Your choice is cola or water?')
+            }
+        }
+        return orderFunction;
+}
+
+
+function createDinnerOrderFunction(passenger) {
+    if (passenger.ticket === 'firstclass') {
+            orderDinnerFunction = function() {
+            alert('Would you like chicken or pasta?')
+        }
+        } else if (passenger.ticket === 'optimal') {
+            orderDinnerFunction = function() {
+            alert('Would you like cheese or bacon?')
+        } 
+        } else {
+            orderDinnerFunction = function() {
+            alert('Your choice is nuts or candys?')
+            }
+        }
+        return orderDinnerFunction;
+
 }
 
 // Важно! Нет необходимости повторно проводить действия в ф-ции createDrinkOrder
 function serveCustomer(passenger) {
     let getDrinkOrderFunction = createDrinkOrder(passenger);
+    let getDinnerOrderFunction = createDinnerOrderFunction(passenger);
     getDrinkOrderFunction();
-    //подать обед;
+    getDinnerOrderFunction();
     getDrinkOrderFunction();
     //включить фильм;
     getDrinkOrderFunction();
