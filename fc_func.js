@@ -60,6 +60,15 @@ function serveCustomer(passenger) {
     let getDrinkOrderFunction = createDrinkOrder(passenger);
     getDrinkOrderFunction();
     //подать обед;
-    etDrinkOrderFunction();
+    getDrinkOrderFunction();
     //включить фильм;
+    getDrinkOrderFunction();
 }
+
+function servePassengers(passengers) {
+    for (let i = 0; i < passengers.length; i++) {
+        serveCustomer(passengers[i]);
+    }
+}
+
+servePassengers(passengers);
