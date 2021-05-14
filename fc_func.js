@@ -42,14 +42,24 @@ function printPassenger(passenger) {
 }
 
 function createDrinkOrder(passenger) {
+    let orferFunction;
     if (passenger.ticket === 'firstclass') {
+        orferFunction = function() {
         alert('Would you like cockatail or wine?')
+        };
     } else {
+        orferFunction = function() {
         alert('Your choice is cola or water?')
+        }
     }
-
+    return orferFunction;
 }
 
+// Важно! Нет необходимости повторно проводить действия в ф-ции createDrinkOrder
 function serveCustomer(passenger) {
-    createDrinkOrder();
+    let getDrinkOrderFunction = createDrinkOrder(passenger);
+    getDrinkOrderFunction();
+    //подать обед;
+    etDrinkOrderFunction();
+    //включить фильм;
 }
